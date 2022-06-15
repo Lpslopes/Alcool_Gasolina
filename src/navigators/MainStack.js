@@ -1,0 +1,19 @@
+import React from 'react';
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import HomeScreen from '../pages/HomeScreen';
+
+const MainStack = createNativeStackNavigator();
+
+export default () => {
+    return(
+        <MainStack.Navigator
+        screenOptions={{
+            headerShown: false
+          }}>
+            <MainStack.Screen name="Home" component={HomeScreen}/>
+
+        </MainStack.Navigator>
+    )
+}
