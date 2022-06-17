@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function HomeScreen(){
+
+  const navigation = useNavigation();
 
     const [Alcool, setAlcool] = useState(0);
     const [Gasolina, setGasolina] = useState(0);
     const [Total, setTotal] = useState(0) 
     
     const calculo = () => {
-      
+      navigation.navigate('Result' ,{ Total: Total, Alcool: Alcool, Gasolina: Gasolina });
       
       if(Alcool && Gasolina) {
-        setTotal((Alcool/Gasolina) * 100);
+        setTotal(parseFloat(Alcool/Gasolina));
       }else {
         alert("Digite os valores do Alcool e Gasolina!")
       }
@@ -54,7 +58,7 @@ export default function HomeScreen(){
             <TouchableOpacity style={styles.botao} onPress={calculo}>
                 <Text style={styles.txtbotao}>Calcular</Text>
             </TouchableOpacity>
-            {Total >= 70?<Text style={styles.title}>O resultado é: {Total.toFixed(2)}</Text> :<Text style={styles.title}>Apenas compensa abastecer com gasolina!</Text>  }
+           
     
             
             
