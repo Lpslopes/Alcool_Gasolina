@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 
-export default function ResultScreen(){
+export default function ResultScreen(props){
     const navigation = useNavigation();
     const route = useRoute();
 
-    const total = route.params.Total;
-    const alcool = route.params.Alcool;
-    const gasolina = route.params.Gasolina;
+    const total = props.route.params.Total;
+    const alcool = props.route.params.Alcool;
+    const gasolina = props.route.params.Gasolina;
 
     const BackButton = () => {
         navigation.goBack();

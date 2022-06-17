@@ -14,11 +14,16 @@ export default function HomeScreen(){
     const calculo = () => {
       navigation.navigate('Result' ,{ Total: Total, Alcool: Alcool, Gasolina: Gasolina });
       
-      if(Alcool && Gasolina) {
-        setTotal(parseFloat(Alcool/Gasolina));
+      if(parseFloat(Alcool) && parseFloat(Gasolina)) {
+        setTotal(Alcool/Gasolina);
       }else {
         alert("Digite os valores do Alcool e Gasolina!")
       }
+    }
+
+    const limpar = () => {
+      setAlcool('');
+      setGasolina('');
     }
     
     
@@ -55,8 +60,12 @@ export default function HomeScreen(){
            </View>
            
            
-            <TouchableOpacity style={styles.botao} onPress={calculo}>
+            <TouchableOpacity style={styles.botaoA} onPress={calculo}>
                 <Text style={styles.txtbotao}>Calcular</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.botao} onPress={limpar}>
+                <Text style={styles.txtbotao}>Limpar</Text>
             </TouchableOpacity>
            
     
@@ -129,7 +138,19 @@ export default function HomeScreen(){
         color: '#fff',
     
       },
-    
+      botaoA: {
+        width:'90%',
+        height:50,
+        borderWidth: 1,
+        backgroundColor: 'blue',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomLeftRadius: 5,
+        borderTopLeftRadius: 5,
+        borderBottomRightRadius: 5,
+        borderTopRightRadius:5
+        
+      },
       botao: {
         width:'90%',
         height:50,
@@ -140,9 +161,12 @@ export default function HomeScreen(){
         borderBottomLeftRadius: 5,
         borderTopLeftRadius: 5,
         borderBottomRightRadius: 5,
-        borderTopRightRadius:5
+        borderTopRightRadius:5,
+        marginTop: 6
         
       },
+     
+      
       txtbotao:{
         fontSize:20,
         color: '#fff',
